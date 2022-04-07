@@ -28,7 +28,7 @@ func NewNode(gvr client.GVR) ResourceViewer {
 	}
 	n.AddBindKeysFn(n.bindKeys)
 	n.GetTable().SetEnterFn(n.showPods)
-
+	n.GetTable().SetSortCol("ALIAS", true)
 	return &n
 }
 

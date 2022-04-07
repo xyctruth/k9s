@@ -30,6 +30,7 @@ type Node struct {
 func (Node) Header(_ string) Header {
 	return Header{
 		HeaderColumn{Name: "NAME"},
+		HeaderColumn{Name: "ALIAS"},
 		HeaderColumn{Name: "STATUS"},
 		HeaderColumn{Name: "ROLE"},
 		HeaderColumn{Name: "VERSION"},
@@ -80,6 +81,7 @@ func (n Node) Render(o interface{}, ns string, r *Row) error {
 	r.ID = client.FQN("", na)
 	r.Fields = Fields{
 		no.Name,
+		no.Labels["alias"],
 		join(statuses, ","),
 		join(roles, ","),
 		no.Status.NodeInfo.KubeletVersion,
